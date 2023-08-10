@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import LabelForm from "./components/LabelForm";
+import "./App.css";
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+export interface LabelData {
+  text: string;
+  code1: string;
+  code2: string;
+  price: number;
 }
 
-export default App
+function App() {
+  const [previewData, setPreviewData] = useState<LabelData | null>(null);
+
+  const onSubmit = (data: LabelData) => {
+    console.log(data);
+    setPreviewData(data);
+  };
+
+  const onPreview = () => {
+    setPreviewData(null); // Clear previous preview data
+  };
+
+  return (
+    <div className="container">
+      <div className="row">
+        <div className="col-md-6">
+          <LabelForm onSubmit={onSubmit} onPreview={onPreview} />
+        </div>
+        <div className="col-md-6">
+          <div className="preview">
+            <h2>Preview</h2>
+            <div className="d-flex justify-content-between">
+              <p className="fw-bold">Text: {previewData?.text}</p>
+              <p>Code 1: {previewData?.code1}</p>
+            </div>
+            <p className="fw-bold">Code 2: {previewData?.code2}</p>
+            <p>
+              Price: <span className="fs-3 fw-bold">{previewData?.price}</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default App;
