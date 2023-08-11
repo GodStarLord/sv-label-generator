@@ -1,6 +1,7 @@
 import { useState } from "react";
 import LabelForm from "./components/LabelForm";
 import "./App.css";
+import LabelTemplate from "./components/LabelTemplate";
 
 export interface LabelData {
   text: string;
@@ -29,7 +30,7 @@ function App() {
         </div>
         <div className="col-md-6">
           <div className="preview">
-            <h2>Preview</h2>
+            {/* <h2>Preview</h2>
             <div className="d-flex justify-content-between">
               <p className="fw-bold">Text: {previewData?.text}</p>
               <p>Code 1: {previewData?.code1}</p>
@@ -37,7 +38,8 @@ function App() {
             <p className="fw-bold">Code 2: {previewData?.code2}</p>
             <p>
               Price: <span className="fs-3 fw-bold">{previewData?.price}</span>
-            </p>
+            </p> */}
+            <LabelTemplate labelData={previewData} />
           </div>
         </div>
       </div>
