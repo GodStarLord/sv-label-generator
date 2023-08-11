@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import ReactToPrint, { useReactToPrint } from "react-to-print";
+import { useReactToPrint } from "react-to-print";
 import LabelForm from "./components/LabelForm";
 import LabelTemplate from "./components/LabelTemplate";
 import "./App.css";
@@ -24,12 +24,12 @@ function App() {
     setPreviewData(data);
   };
 
-  const onPreview = () => {
-    setPreviewData(null); // Clear previous preview data
+  // const onPreview = () => {
+  //   setPreviewData(null); // Clear previous preview data
 
-    // Accessing all the html data here
-    if (!componentRef) return null;
-  };
+  //   // Accessing all the html data here
+  //   if (!componentRef) return null;
+  // };
 
   return (
     <div className="container">
