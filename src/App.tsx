@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
+import ReactToPrint, { useReactToPrint } from "react-to-print";
 import LabelForm from "./components/LabelForm";
-import "./App.css";
 import LabelTemplate from "./components/LabelTemplate";
+import "./App.css";
 
 export interface LabelData {
   text: string;
@@ -11,6 +12,11 @@ export interface LabelData {
 }
 
 function App() {
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+  const componentRef = useRef(null);
+
   const [previewData, setPreviewData] = useState<LabelData | null>(null);
 
   const onSubmit = (data: LabelData) => {
@@ -20,13 +26,16 @@ function App() {
 
   const onPreview = () => {
     setPreviewData(null); // Clear previous preview data
+
+    // Accessing all the html data here
+    if (!componentRef) return null;
   };
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <LabelForm onSubmit={onSubmit} onPreview={onPreview} />
+          <LabelForm onSubmit={onSubmit} onPreview={handlePrint} />
         </div>
         <div className="col-md-6">
           <div className="preview">
@@ -39,7 +48,7 @@ function App() {
             <p>
               Price: <span className="fs-3 fw-bold">{previewData?.price}</span>
             </p> */}
-            <LabelTemplate labelData={previewData} />
+            <LabelTemplate ref={componentRef} labelData={previewData} />
           </div>
         </div>
       </div>
