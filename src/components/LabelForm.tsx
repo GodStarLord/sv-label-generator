@@ -3,10 +3,10 @@ import { LabelData } from "../App";
 
 interface Props {
   onSubmit: (data: LabelData) => void;
-  onPreview: () => void;
+  onPrint: () => void;
 }
 
-const LabelForm = ({ onSubmit, onPreview }: Props) => {
+const LabelForm = ({ onSubmit, onPrint }: Props) => {
   const { register, handleSubmit } = useForm<LabelData>();
 
   return (
@@ -22,21 +22,21 @@ const LabelForm = ({ onSubmit, onPreview }: Props) => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="code1">Code 1</label>
+          <label htmlFor="code">Code</label>
           <input
             type="text"
             className="form-control"
-            id="code1"
-            {...register("code1")}
+            id="code"
+            {...register("code")}
           />
         </div>
         <div className="form-group">
-          <label htmlFor="code2">Code 2</label>
+          <label htmlFor="swsp">SWSP</label>
           <input
             type="text"
             className="form-control"
-            id="code2"
-            {...register("code2")}
+            id="swsp"
+            {...register("swsp")}
           />
         </div>
         <div className="form-group">
@@ -52,12 +52,8 @@ const LabelForm = ({ onSubmit, onPreview }: Props) => {
           <button type="submit" className="btn btn-primary mr-2">
             Generate
           </button>
-          <button
-            type="button"
-            className="btn btn-secondary"
-            onClick={onPreview}
-          >
-            Download
+          <button type="button" className="btn btn-secondary" onClick={onPrint}>
+            Print
           </button>
         </div>
       </form>

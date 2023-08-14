@@ -11,7 +11,8 @@ const LabelTemplate = React.forwardRef<HTMLDivElement, Props>(
   ({ labelData }: Props, ref) => {
     let barcodeData = "";
 
-    if (labelData) barcodeData = `Price: ${labelData?.price}`;
+    if (labelData)
+      barcodeData = ` ${labelData.text}${labelData.swsp}${labelData?.price}`;
 
     return (
       <div ref={ref}>
@@ -21,15 +22,16 @@ const LabelTemplate = React.forwardRef<HTMLDivElement, Props>(
           </div>
 
           <div className="d-flex justify-content-between">
-            <p className="fw-bold">Text: {labelData?.text}</p>
-            <p>Code 1: {labelData?.code1}</p>
+            <p className="fw-bold mb-0">Text: {labelData?.text}</p>
+            <p className="mb-0">Code: {labelData?.code}</p>
           </div>
 
           <Barcode value={barcodeData} />
 
-          <p className="fw-bold">Code 2: {labelData?.code2}</p>
-          <p>
-            Price: <span className="fs-3 fw-bold">{labelData?.price}</span>
+          <p className="fw-bold mb-0">SWSP: {labelData?.swsp}</p>
+          <p className="text-center">
+            <span className="fw-bold mb-0">Price:</span>{" "}
+            <span className="fs-3 fw-bold mb-0">{labelData?.price}</span>
           </p>
         </div>
       </div>
