@@ -5,7 +5,7 @@ import LabelTemplate from "./components/LabelTemplate";
 import "./App.css";
 
 export interface LabelData {
-  text: string;
+  modal: string;
   code: string;
   swsp: string;
   price: number;
@@ -17,7 +17,7 @@ function App() {
   });
   const componentRef = useRef(null);
 
-  const [previewData, setPreviewData] = useState<LabelData | null>(null);
+  const [previewData, setPreviewData] = useState<LabelData>({} as LabelData);
 
   const onSubmit = (data: LabelData) => {
     console.log(data);

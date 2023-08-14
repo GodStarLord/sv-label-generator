@@ -13,15 +13,15 @@ const LabelForm = ({ onSubmit, onPrint }: Props) => {
     <>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="form-group">
-          <label htmlFor="text">Text</label>
+          <label htmlFor="text">Modal</label>
           <input
             type="text"
             className="form-control"
-            id="text"
-            {...register("text")}
+            id="modal "
+            {...register("modal")}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mt-2">
           <label htmlFor="code">Code</label>
           <input
             type="text"
@@ -30,7 +30,7 @@ const LabelForm = ({ onSubmit, onPrint }: Props) => {
             {...register("code")}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mt-2">
           <label htmlFor="swsp">SWSP</label>
           <input
             type="text"
@@ -39,7 +39,7 @@ const LabelForm = ({ onSubmit, onPrint }: Props) => {
             {...register("swsp")}
           />
         </div>
-        <div className="form-group">
+        <div className="form-group mt-2">
           <label htmlFor="price">Price</label>
           <input
             type="number"
@@ -48,8 +48,8 @@ const LabelForm = ({ onSubmit, onPrint }: Props) => {
             {...register("price")}
           />
         </div>
-        <div className="form-group">
-          <button type="submit" className="btn btn-primary mr-2">
+        <div className="form-group mt-2">
+          <button type="submit" className="btn btn-primary me-2">
             Generate
           </button>
           <button type="button" className="btn btn-secondary" onClick={onPrint}>
