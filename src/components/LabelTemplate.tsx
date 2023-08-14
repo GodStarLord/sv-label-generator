@@ -20,8 +20,8 @@ const LabelTemplate = React.forwardRef<HTMLDivElement, Props>(
         </div>
 
         <div className="d-flex justify-content-between">
-          <p className="fw-bold mb-0">Modal-{labelData?.modal}</p>
-          <p className="mb-0"> Code-{labelData?.code}</p>
+          <p className="fw-bold mb-0">Modal: {labelData?.modal}</p>
+          <p className="mb-0"> Code: {labelData?.code}</p>
         </div>
 
         <Barcode value={barcodeData} />

@@ -31,9 +31,13 @@ function App() {
           <LabelForm onSubmit={onSubmit} onPrint={handlePrint} />
         </div>
         <div className="col-md-6">
-          <div className="preview">
-            <LabelTemplate ref={componentRef} labelData={previewData} />
-          </div>
+          {previewData.price && (
+            <>
+              <div className="preview">
+                <LabelTemplate ref={componentRef} labelData={previewData} />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>
