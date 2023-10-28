@@ -25,22 +25,24 @@ function App() {
   };
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-6">
-          <LabelForm onSubmit={onSubmit} onPrint={handlePrint} />
-        </div>
-        <div className="col-md-6">
-          {previewData.price && (
-            <>
-              <div className="preview">
-                <LabelTemplate ref={componentRef} labelData={previewData} />
-              </div>
-            </>
-          )}
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col-md-6">
+            <LabelForm onSubmit={onSubmit} onPrint={handlePrint} />
+          </div>
+          <div className="col-md-6">
+            {previewData.price && (
+              <>
+                <div className="preview">
+                  <LabelTemplate ref={componentRef} labelData={previewData} />
+                </div>
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
